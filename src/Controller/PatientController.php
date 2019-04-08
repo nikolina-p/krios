@@ -26,4 +26,12 @@ class PatientController extends AbstractController
             "patients" => $patients
         ]);
     }
+
+    /**
+     * @Route ("/new_patient", name="new_patient")
+     */
+    public function newPatient()
+    {
+
+    }
 }
