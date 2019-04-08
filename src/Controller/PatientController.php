@@ -35,7 +35,7 @@ class PatientController extends AbstractController
      */
     public function newPatient(Request $request)
     {
-        $form = $this->createForm(PatientForm::class, $patient = new Patient());
+        $form = $this->createForm(PatientForm::class, $patient = (new Patient())->setGender('MALE'));
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -45,7 +45,25 @@ class PatientController extends AbstractController
         return $this->render('patients/patient_form.html.twig', array(
             'form' => $form->createView(), 'patient' => $patient
         ));
+    }
 
+    /**
+     * @Route("/edit/{id}", name="edit_patient")
+     */
+    public function editPatient(Request $request, Patient $patient)
+    {
+        $form = $this->createForm(PatientForm::class, $patient);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->patientService->saveChanges($patient);
+            return $this->redirectToRoute('homepage');
+        }
+
+        return $this->render('patients/patient_form.html.twig', [
+            'form' => $form->createView(),
+            'patient' => $patient
+        ]);
 
     }
 }

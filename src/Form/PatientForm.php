@@ -2,11 +2,13 @@
 
 namespace App\Form;
 
+use App\Entity\Patient;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class PatientForm extends AbstractType
 {
@@ -22,10 +24,16 @@ class PatientForm extends AbstractType
                 'label' => 'Pol',
                 'expanded' => true,
                 'multiple' => false,
-                'data' => 'MALE',
                 ])
         ->add('phone', TextType::class, ['label' => 'Telefon'])
         ->add('email', EmailType::class, ['label' => 'e-mail']);
+    }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'data_class' => Patient::class,
+        ]);
     }
 
 }

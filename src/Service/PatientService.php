@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Entity\Patient;
+use App\Form\PatientForm;
 use App\Repository\PatientRepository;
 
 class PatientService
@@ -20,6 +21,11 @@ class PatientService
     }
 
     public function newPatient(Patient $patient): void
+    {
+        $this->patientRepository->persist($patient);
+    }
+
+    public function saveChanges(Patient $patient): void
     {
         $this->patientRepository->persist($patient);
     }
