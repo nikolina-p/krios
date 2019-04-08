@@ -48,12 +48,6 @@ class Patient
      */
     private $xRayFile;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $admin;
-
     public function __construct()
     {
         $this->xRayFile = new ArrayCollection();
@@ -151,18 +145,6 @@ class Patient
                 $xRayFile->setPatient(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getAdmin(): ?User
-    {
-        return $this->admin;
-    }
-
-    public function setAdmin(?User $admin): self
-    {
-        $this->admin = $admin;
 
         return $this;
     }
