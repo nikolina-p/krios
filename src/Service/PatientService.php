@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Entity\Patient;
 use App\Repository\PatientRepository;
 
 class PatientService
@@ -16,5 +17,10 @@ class PatientService
     public function findAll(): array
     {
         return $this->patientRepository->findAll();
+    }
+
+    public function newPatient(Patient $patient): void
+    {
+        $this->patientRepository->persist($patient);
     }
 }

@@ -19,6 +19,13 @@ class PatientRepository extends ServiceEntityRepository
         parent::__construct($registry, Patient::class);
     }
 
+    public function persist(Patient $patient)
+    {
+        $entityManager = $this->getEntityManager();
+        $entityManager->persist($patient);
+        $entityManager->flush($patient);
+    }
+
     // /**
     //  * @return Patient[] Returns an array of Patient objects
     //  */

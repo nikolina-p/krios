@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Patient;
+use App\Form\PatientForm;
 use App\Service\PatientService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PatientController extends AbstractController
@@ -22,7 +25,7 @@ class PatientController extends AbstractController
     {
         $patients = $this->patientService->findAll();
 
-        return $this->render("Patients/show_all.html.twig", [
+        return $this->render("patients/show_all.html.twig", [
             "patients" => $patients
         ]);
     }
@@ -30,8 +33,19 @@ class PatientController extends AbstractController
     /**
      * @Route ("/new_patient", name="new_patient")
      */
-    public function newPatient()
+    public function newPatient(Request $request)
     {
+        $form = $this->createForm(PatientForm::class, $patient = new Patient());
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->patientService->newPatient($patient);
+            return $this->redirectToRoute('homepage');
+        }
+        return $this->render('patients/patient_form.html.twig', array(
+            'form' => $form->createView(), 'patient' => $patient
+        ));
+
 
     }
 }
