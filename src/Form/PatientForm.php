@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -16,11 +17,15 @@ class PatientForm extends AbstractType
             ->add('gender', ChoiceType::class, [
                 'choices' => [
                     'M' => 'MALE',
-                    'F' => 'FEMALE'
-                ]
+                    'Ž' => 'FEMALE'
+                ],
+                'label' => 'Pol',
+                'expanded' => true,
+                'multiple' => false,
+                'data' => 'MALE',
                 ])
         ->add('phone', TextType::class, ['label' => 'Telefon'])
-        ->add('email', TextType::class, ['label' => 'e-mail']);
+        ->add('email', EmailType::class, ['label' => 'e-mail']);
     }
 
 }
