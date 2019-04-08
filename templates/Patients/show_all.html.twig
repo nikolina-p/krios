@@ -17,6 +17,9 @@
     </tr>
     {% endfor %}
 </table>
+    {% if patients|length == 0 %}
+        <h4>No patients found</h4>
+    {% endif %}
     <br>
     <span><a href="{{ path('new_patient') }}">New patient</a></span><br>
 {% endblock %}
