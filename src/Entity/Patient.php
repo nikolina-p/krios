@@ -118,10 +118,7 @@ class Patient
         return $this;
     }
 
-    /**
-     * @return Collection|XRayFile[]
-     */
-    public function getXRayFile(): Collection
+    public function getXRayFile(): ?Collection
     {
         return $this->xRayFile;
     }
@@ -147,5 +144,10 @@ class Patient
         }
 
         return $this;
+    }
+
+    public function setXRayFiles(ArrayCollection $files): void
+    {
+        $this->xRayFile = $files;
     }
 }

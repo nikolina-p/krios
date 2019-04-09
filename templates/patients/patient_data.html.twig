@@ -5,7 +5,11 @@
     Ime i prezime: {{ patient.name~' '~patient.surname }} <br>
     Telefon: {{ patient.phone }}<br>
     Email: {{ patient.email }}<br>
-    Pol: {{ patient.gender }}
+    Pol: {{ patient.gender }}<br><br>
+    {{ form_start(form) }}
+    {{ form_row(form.xRayFile) }}
+    <button type="submit">Upload</button>
+    {{ form_end(form) }}
     <br><br>
 
         <span><a href="{{ path('edit_patient', { 'id': patient.id }) }}">Edit data</a></span><br>

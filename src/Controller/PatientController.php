@@ -6,6 +6,7 @@ use App\DTO\PatientDTO;
 use App\Entity\Patient;
 use App\Form\PatientForm;
 use App\Form\SearchForm;
+use App\Form\UploadForm;
 use App\Service\PatientService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -83,8 +84,20 @@ class PatientController extends AbstractController
      */
     public function loadPatient(Request $request, Patient $patient)
     {
+        $form = $this->createForm(UploadForm::class, $patient);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->patientService->uploadFile($patient);
+            return $this->redirectToRoute('show_patient', [
+                'id' => $patient->getId()
+            ]);
+        }
+
         return $this->render('patients/patient_data.html.twig',[
            "patient" =>$patient,
+            "form" => $form->createView(),
         ]);
     }
 }

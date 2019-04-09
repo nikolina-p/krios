@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\XRayFileRepository")
@@ -26,6 +28,15 @@ class XRayFile
      * @ORM\JoinColumn(nullable=false)
      */
     private $patient;
+
+    /**
+     * @var UploadedFile
+     * @Assert\File(
+     *     maxSize = "2M",
+     *     maxSizeMessage = "The file is too large. Max 2M allowed"
+     * )
+     */
+    private $xRayFile;
 
     public function getId(): ?int
     {
@@ -53,6 +64,24 @@ class XRayFile
     {
         $this->patient = $patient;
 
+        return $this;
+    }
+
+    /**
+     * @return UploadedFile
+     */
+    public function getXRayFile(): ?UploadedFile
+    {
+        return $this->xRayFile;
+    }
+
+    /**
+     * @param UploadedFile $xRayFile
+     * @return XRayFile
+     */
+    public function setXRayFile(UploadedFile $xRayFile): self
+    {
+        $this->xRayFile = $xRayFile;
         return $this;
     }
 }

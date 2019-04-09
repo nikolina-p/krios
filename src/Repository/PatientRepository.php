@@ -6,12 +6,6 @@ use App\Entity\Patient;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
-/**
- * @method Patient|null find($id, $lockMode = null, $lockVersion = null)
- * @method Patient|null findOneBy(array $criteria, array $orderBy = null)
- * @method Patient[]    findAll()
- * @method Patient[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- */
 class PatientRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
