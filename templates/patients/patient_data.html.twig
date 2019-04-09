@@ -5,7 +5,12 @@
     Ime i prezime: {{ patient.name~' '~patient.surname }} <br>
     Telefon: {{ patient.phone }}<br>
     Email: {{ patient.email }}<br>
-    Pol: {{ patient.gender }}<br><br>
+    Pol: {{ patient.gender }}<br>
+    {% for file in patient.xRayFile %}
+        <a href=""><img src="{{ asset('uploads/xRay/xRay_4.jpeg') }}" class="xRayIcon"></a>
+    {% endfor %}
+    
+    <br>
     {{ form_start(form) }}
     {{ form_row(form.xRayFile) }}
     <button type="submit">Upload</button>

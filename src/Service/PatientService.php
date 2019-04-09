@@ -42,5 +42,6 @@ class PatientService
     public function uploadFile(Patient $patient)
     {
         $this->xRayFileService->uploadXRayFiles($patient->getXRayFile());
+        $this->saveChanges($patient);
     }
 }

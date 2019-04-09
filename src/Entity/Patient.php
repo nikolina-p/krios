@@ -44,7 +44,8 @@ class Patient
     private $email;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\XRayFile", mappedBy="patient", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\XRayFile", mappedBy="patient", orphanRemoval=true,
+     *     cascade={"persist", "remove"})
      */
     private $xRayFile;
 

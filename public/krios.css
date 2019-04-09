@@ -1,3 +1,6 @@
 .selectable_row:hover{
     background-color: #ffcc00;
 }
+.xRayIcon{
+    width: 2em;
+}
