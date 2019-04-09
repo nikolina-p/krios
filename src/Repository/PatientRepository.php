@@ -26,32 +26,16 @@ class PatientRepository extends ServiceEntityRepository
         $entityManager->flush($patient);
     }
 
-    // /**
-    //  * @return Patient[] Returns an array of Patient objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function searchPatients(string $searchTerm): array
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $queryBuilder = $this->getEntityManager()->createQueryBuilder();
 
-    /*
-    public function findOneBySomeField($value): ?Patient
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $queryBuilder->select('p')
+            ->from('App:Patient', 'p')
+            ->where('p.name LIKE :searchTerm')
+            ->orWhere('p.surname LIKE :searchTerm')
+            ->setParameter('searchTerm', "%".$searchTerm."%");
+
+        return $queryBuilder->getQuery()->getArrayResult();
     }
-    */
 }

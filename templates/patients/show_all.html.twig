@@ -1,25 +1,31 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-<table id="patients">
-    <tr>
-        <td>ID</td>
-        <td>Ime</td>
-        <td>Prezime</td>
-        <td>Telefon</td>
-    </tr>
-    {% for patient in patients %}
-    <tr>
-        <td>{{ patient.id }}</td>
-        <td>{{ patient.name }}</td>
-        <td>{{ patient.surname }}</td>
-        <td>{{ patient.phone }}</td>
-    </tr>
-    {% endfor %}
-</table>
-    {% if patients|length == 0 %}
-        <h4>No patients found</h4>
-    {% endif %}
+    <div id="search">
+        {{ form_start(form) }}
+        <span>{{ form_row(form.searchTerm) }}</span>
+        {{ form_end(form) }}
+    </div>
     <br>
-    <span><a href="{{ path('new_patient') }}">New patient</a></span><br>
+    <table id="patients">
+        <tr>
+            <td>ID</td>
+            <td>Ime</td>
+            <td>Prezime</td>
+            <td>Telefon</td>
+        </tr>
+        {% for patient in patients %}
+        <tr>
+            <td>{{ patient.id }}</td>
+            <td>{{ patient.name }}</td>
+            <td>{{ patient.surname }}</td>
+            <td>{{ patient.phone }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+        {% if patients|length == 0 %}
+            <h4>No patients found</h4>
+        {% endif %}
+        <br>
+        <span><a href="{{ path('new_patient') }}">New patient</a></span><br>
 {% endblock %}

@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\DTO\PatientDTO;
 use App\Entity\Patient;
 use App\Form\PatientForm;
+use App\Form\SearchForm;
 use App\Service\PatientService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,12 +23,21 @@ class PatientController extends AbstractController
     /**
      * @Route ("/", name = "homepage")
      */
-    public function showAll()
+    public function showAll(Request $request)
     {
-        $patients = $this->patientService->findAll();
+        $form = $this->createForm(SearchForm::class, $patientDTO = new PatientDTO());
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $patients = $this->patientService->searchPatients($patientDTO);
+        } else {
+            $patients = $this->patientService->findAll();
+        }
 
         return $this->render("patients/show_all.html.twig", [
-            "patients" => $patients
+            "patients" => $patients,
+            "form" => $form->createView(),
         ]);
     }
 
