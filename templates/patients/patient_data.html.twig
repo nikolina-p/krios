@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    Broj kartona: <b>{{ patient.id }}</b><br>
+    Ime i prezime: {{ patient.name~' '~patient.surname }} <br>
+    Telefon: {{ patient.phone }}<br>
+    Email: {{ patient.email }}<br>
+    Pol: {{ patient.gender }}
+    <br><br>
+
+        <span><a href="{{ path('edit_patient', { 'id': patient.id }) }}">Edit data</a></span><br>
+{% endblock %}

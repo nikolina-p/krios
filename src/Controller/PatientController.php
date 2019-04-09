@@ -77,4 +77,14 @@ class PatientController extends AbstractController
         ]);
 
     }
+
+    /**
+     * @Route("/patient/{id}", name="show_patient")
+     */
+    public function loadPatient(Request $request, Patient $patient)
+    {
+        return $this->render('patients/patient_data.html.twig',[
+           "patient" =>$patient,
+        ]);
+    }
 }
