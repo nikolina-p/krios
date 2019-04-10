@@ -30,9 +30,9 @@ class XRayFileService
         }
     }
 
-    public function deleteXRayFile(string $fileName): void
+    public function deleteXRayFile(int $id): void
     {
-        $file = $this->xRayFileRepository->findOneBy(['fileName' => $fileName]);
+        $file = $this->xRayFileRepository->findOneBy(['id' => $id]);
         $this->xRayFileManager->deleteFile($file->getFileName());
         $this->xRayFileRepository->delete($file);
     }

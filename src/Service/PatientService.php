@@ -44,4 +44,9 @@ class PatientService
         $this->xRayFileService->uploadXRayFiles($patient->getXRayFile()->unwrap());
         $this->saveChanges();
     }
+
+    public function deleteXRayFile(int $id)
+    {
+        $this->xRayFileService->deleteXRayFile($id);
+    }
 }

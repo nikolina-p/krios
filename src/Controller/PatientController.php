@@ -4,12 +4,14 @@ namespace App\Controller;
 
 use App\DTO\PatientDTO;
 use App\Entity\Patient;
+use App\Exception\EntityNotDeletedException;
 use App\Form\PatientForm;
 use App\Form\SearchForm;
 use App\Form\UploadForm;
 use App\Service\PatientService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PatientController extends AbstractController
@@ -106,5 +108,18 @@ class PatientController extends AbstractController
            "patient" =>$patient,
             "form" => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/file/delete/{id}", name="delete_file")
+     */
+    public function deleteXRayFile(int $id)
+    {
+        try {
+            $this->patientService->deleteXRayFile($id);
+            return new Response(null, 204);
+        } catch (EntityNotDeletedException $exception) {
+            return new Response($exception->getMessage(), 400);
+        }
     }
 }

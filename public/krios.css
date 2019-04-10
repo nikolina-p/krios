@@ -1,6 +1,22 @@
 .selectable_row:hover{
     background-color: #ffcc00;
 }
+.selectable_link:hover{
+    text-decoration: underline;
+    color: blue;
+}
+.xRaySpan{
+    float: left;
+    margin-right: 10px;
+    border: solid black 1px;
+}
 .xRayIcon{
     width: 2em;
+}
+.xRaySubs{
+    font-size: .5em;
+    margin-top: 0px;
+}
+.uploadForm{
+    clear: both;
 }

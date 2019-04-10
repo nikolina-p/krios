@@ -7,14 +7,20 @@
     Email: {{ patient.email }}<br>
     Pol: {{ patient.gender }}<br>
     {% for file in patient.xRayFile %}
-        <a href=""><img src="{{ asset('uploads/xRay/xRay_4.jpeg') }}" class="xRayIcon"></a>
+        <span id="{{ file.id }}" class="xRaySpan">
+            <a href=""><img src="{{ asset('uploads/xRay/xRay_4.jpeg') }}" class="xRayIcon"></a>
+            <p class="xRaySubs">10.4.2019</p>
+            <p class="xRaySubs selectable_link" onclick="deleteFile('{{ file.id }}')">Delete</p>
+        </span>
     {% endfor %}
-    
     <br>
-    {{ form_start(form) }}
-    {{ form_row(form.xRayFile) }}
-    <button type="submit">Upload</button>
-    {{ form_end(form) }}
+    <div class="uploadForm">
+        {{ form_start(form) }}
+        {{ form_row(form.xRayFile) }}
+        <button type="submit">Upload</button>
+        {{ form_end(form) }}
+    </div>
+
     <br><br>
 
         <span><a href="{{ path('edit_patient', { 'id': patient.id }) }}">Edit data</a></span><br>
