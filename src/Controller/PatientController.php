@@ -13,6 +13,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class PatientController extends AbstractController
 {
@@ -25,6 +27,7 @@ class PatientController extends AbstractController
 
     /**
      * @Route ("/", name = "homepage")
+     * @Security("is_granted('ROLE_USER')")
      */
     public function showAll(Request $request)
     {
@@ -46,6 +49,7 @@ class PatientController extends AbstractController
 
     /**
      * @Route ("/new_patient", name="new_patient")
+     * @Security("is_granted('ROLE_USER')")
      */
     public function newPatient(Request $request)
     {
@@ -63,6 +67,7 @@ class PatientController extends AbstractController
 
     /**
      * @Route("/edit/{id}", name="edit_patient")
+     * @Security("is_granted('ROLE_USER')")
      */
     public function editPatient(Request $request, Patient $patient)
     {
@@ -83,6 +88,7 @@ class PatientController extends AbstractController
 
     /**
      * @Route("/patient/{id}", name="show_patient")
+     * @Security("is_granted('ROLE_USER')")
      */
     public function loadPatient(Request $request, Patient $patient)
     {
@@ -112,6 +118,7 @@ class PatientController extends AbstractController
 
     /**
      * @Route("/file/delete/{id}", name="delete_file")
+     * @Security("is_granted('ROLE_USER')")
      */
     public function deleteXRayFile(int $id)
     {
