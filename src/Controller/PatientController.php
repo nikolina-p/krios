@@ -89,7 +89,14 @@ class PatientController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $oldFiles = $patient->getXRayFile()->getSnapshot();
+
+            foreach ($oldFiles as $file) {
+                $patient->addXRayFile($file);
+            }
+
             $this->patientService->uploadFile($patient);
+
             return $this->redirectToRoute('show_patient', [
                 'id' => $patient->getId()
             ]);

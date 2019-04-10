@@ -20,7 +20,7 @@ class XRayFileService
         $this->xRayFileRepository = $xRayFileRepository;
     }
 
-    public function uploadXRayFiles(PersistentCollection $xRayFiles): void
+    public function uploadXRayFiles(ArrayCollection $xRayFiles): void
     {
         foreach ($xRayFiles as $file) {
             if ($file->getXRayFile() != null) {

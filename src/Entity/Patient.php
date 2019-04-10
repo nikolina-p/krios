@@ -127,8 +127,8 @@ class Patient
     public function addXRayFile(XRayFile $xRayFile): self
     {
         if (!$this->xRayFile->contains($xRayFile)) {
-            $this->xRayFile[] = $xRayFile;
             $xRayFile->setPatient($this);
+            $this->xRayFile[] = $xRayFile;
         }
 
         return $this;

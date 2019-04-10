@@ -29,9 +29,9 @@ class PatientService
         $this->patientRepository->persist($patient);
     }
 
-    public function saveChanges(Patient $patient): void
+    public function saveChanges(): void
     {
-        $this->patientRepository->persist($patient);
+        $this->patientRepository->saveChanges();
     }
 
     public function searchPatients(PatientDTO $patientDTO): array
@@ -41,7 +41,7 @@ class PatientService
 
     public function uploadFile(Patient $patient)
     {
-        $this->xRayFileService->uploadXRayFiles($patient->getXRayFile());
-        $this->saveChanges($patient);
+        $this->xRayFileService->uploadXRayFiles($patient->getXRayFile()->unwrap());
+        $this->saveChanges();
     }
 }
