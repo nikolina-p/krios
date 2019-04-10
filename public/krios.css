@@ -11,7 +11,7 @@
     border: solid black 1px;
 }
 .xRayIcon{
-    width: 2em;
+    width: 5em;
 }
 .xRaySubs{
     font-size: .5em;
@@ -19,4 +19,11 @@
 }
 .uploadForm{
     clear: both;
+}
+.trashIcon{
+    width: 1em;
+    transition: transform .25s ease;
+}
+.trashIcon:hover{
+    transform: scale(.8);
 }
