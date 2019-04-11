@@ -53,4 +53,9 @@ class UserService
     {
         return $this->userRepository->findAll();
     }
+
+    public function newUser(User $user): void
+    {
+        $this->userRepository->persist($user);
+    }
 }

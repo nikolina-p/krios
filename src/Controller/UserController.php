@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\DTO\PasswordDTO;
+use App\Entity\User;
 use App\Form\PasswordForm;
+use App\Form\UserForm;
 use App\Service\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -56,8 +58,22 @@ class UserController extends AbstractController
      * @Route("/users/new", name="new_user")
      * @Security("is_granted('ROLE_USER')")
      */
-    public function newUser()
-    {}
+    public function newUser(Request $request)
+    {
+        $form = $this->createForm(UserForm::class, $user = new User());
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->userService->newUser($user);
+            return $this->redirectToRoute('manage_users');
+        }
+
+        return $this->render(
+            'users/user_form.html.twig',
+            ['form' => $form->createView()]
+        );
+    }
 
     /**
      * @Route("/users/edit", name="edit_user")
