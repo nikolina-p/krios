@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <table id="users">
+        <tr>
+            <td>ID</td>
+            <td>Ime</td>
+            <td>Prezime</td>
+            <td>username</td>
+        </tr>
+        {% for user in users %}
+        <tr class="selectable_row" onclick="showUser('{{ user.id }}')">
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.surname }}</td>
+            <td>{{ user.username }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+        {% if users|length == 0 %}
+            <h4>No users found</h4>
+        {% endif %}
+        <br>
+        <span><a href="{{ path('new_user') }}">New user</a></span><br>
+{% endblock %}

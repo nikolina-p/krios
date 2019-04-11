@@ -48,4 +48,9 @@ class UserService
         $user->setPassword($newPassword);
         $this->saveChanges($user);
     }
+
+    public function findAll(): array
+    {
+        return $this->userRepository->findAll();
+    }
 }

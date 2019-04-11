@@ -38,4 +38,38 @@ class UserController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/users", name="manage_users")
+     * @Security("is_granted('ROLE_USER')")
+     */
+    public function showUsers()
+    {
+        $users = $this->userService->findAll();
+
+        return $this->render('users/manage_users.html.twig', [
+            'users' => $users,
+        ]);
+    }
+
+    /**
+     * @Route("/users/new", name="new_user")
+     * @Security("is_granted('ROLE_USER')")
+     */
+    public function newUser()
+    {}
+
+    /**
+     * @Route("/users/edit", name="edit_user")
+     * @Security("is_granted('ROLE_USER')")
+     */
+    public function editUser()
+    {}
+
+    /**
+     * @Route("/users/delete", name="delete_user")
+     * @Security("is_granted('ROLE_USER')")
+     */
+    public function deleteUser()
+    {}
 }
