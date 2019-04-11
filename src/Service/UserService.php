@@ -61,6 +61,7 @@ class UserService
 
     public function newUser(User $user): void
     {
+        $user->setPassword($this->encodePassword($user));
         $this->userRepository->persist($user);
     }
 
