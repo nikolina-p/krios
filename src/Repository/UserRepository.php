@@ -8,20 +8,10 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
 
 class UserRepository extends ServiceEntityRepository
 {
+    use RepositoryTrait;
+
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, User::class);
-    }
-
-    public function persist(User $entity): void
-    {
-        $entityManager = $this->getEntityManager();
-        $entityManager->persist($entity);
-        $entityManager->flush();
-    }
-
-    public function saveChanges(): void
-    {
-        $this->getEntityManager()->flush();
     }
 }

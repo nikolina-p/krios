@@ -7,13 +7,21 @@
             <td>Ime</td>
             <td>Prezime</td>
             <td>username</td>
+            <td>edit</td>
+            <td>delete</td>
         </tr>
         {% for user in users %}
-        <tr class="selectable_row" onclick="showUser('{{ user.id }}')">
+        <tr class="selectable_row" id="{{ user.id }}" onclick="showUser('{{ user.id }}')">
             <td>{{ user.id }}</td>
             <td>{{ user.name }}</td>
             <td>{{ user.surname }}</td>
             <td>{{ user.username }}</td>
+            <td><a href="{{ path('edit_user',{ 'id': user.id }) }}">
+                    <img src="uploads/design/edit-29.png" class="trashIcon">
+                </a></td>
+            <td><a href="" onclick="deleteUser('{{ user.id }}')" >
+                    <img src="uploads/design/trash-23.png" class="trashIcon">
+                </a></td>
         </tr>
         {% endfor %}
     </table>

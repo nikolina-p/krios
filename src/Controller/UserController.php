@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\DTO\PasswordDTO;
 use App\Entity\User;
+use App\Exception\EntityNotDeletedException;
 use App\Form\PasswordForm;
 use App\Form\UserForm;
 use App\Service\UserService;
@@ -70,22 +71,48 @@ class UserController extends AbstractController
         }
 
         return $this->render(
-            'users/user_form.html.twig',
-            ['form' => $form->createView()]
-        );
+            'users/user_form.html.twig', [
+                'form' => $form->createView()
+            ]);
     }
 
     /**
-     * @Route("/users/edit", name="edit_user")
+     * @Route("/users/edit/{id}", name="edit_user")
      * @Security("is_granted('ROLE_USER')")
      */
-    public function editUser()
-    {}
+    public function editUser(Request $request, User $user)
+    {
+        $form = $this->createForm(UserForm::class, $user);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->userService->editUser();
+            return $this->redirectToRoute('manage_users');
+        }
+
+        return $this->render(
+            'users/user_form.html.twig', [
+                'form' => $form->createView(),
+                'user' => $user,
+            ]);
+    }
 
     /**
-     * @Route("/users/delete", name="delete_user")
+     * @Route("/users/delete/{id}", name="delete_user")
      * @Security("is_granted('ROLE_USER')")
      */
-    public function deleteUser()
-    {}
+    public function deleteUser(Request $request, User $user)
+    {
+        try {
+            $user = $this->userService->findById($user->getId());
+            $this->userService->deleteUser($user);
+        } catch (EntityNotDeletedException $exception) {
+            $this->addFlash(
+                'error',
+                $exception->getMessage()
+            );
+        }
+        return $this->redirectToRoute('manage_users');
+    }
 }

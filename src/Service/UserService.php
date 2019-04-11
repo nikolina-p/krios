@@ -54,8 +54,23 @@ class UserService
         return $this->userRepository->findAll();
     }
 
+    public function findById(int $id): object
+    {
+        return $this->userRepository->findOneBy(array('id' => $id));
+    }
+
     public function newUser(User $user): void
     {
         $this->userRepository->persist($user);
+    }
+
+    public function editUser(): void
+    {
+        $this->userRepository->saveChanges();
+    }
+
+    public function deleteUser(User $user)
+    {
+        $this->userRepository->delete($user);
     }
 }

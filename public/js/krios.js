@@ -9,6 +9,13 @@ function deleteFile(id){
     }
 }
 
+function deleteUser(id){
+    let response = ajaxCall('/users/delete/'+id);
+    if (response.status == 200) {
+        document.getElementById(id).style.display = "none";
+    }
+}
+
 function ajaxCall(route){
     let ajax = null;
     if(window.XMLHttpRequest) {
