@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\DTO\PatientDTO;
 use App\Entity\Patient;
+use App\Entity\XRayFile;
 use App\Form\PatientForm;
 use App\Repository\PatientRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -39,9 +40,21 @@ class PatientService
         return $this->patientRepository->searchPatients($patientDTO->getSearchTerm());
     }
 
-    public function uploadFile(Patient $patient)
+    public function uploadFiles(Patient $patient)
     {
-        $this->xRayFileService->uploadXRayFiles($patient->getXRayFile()->unwrap());
+        $oldFiles = $patient->getXRayFile()->getSnapshot();
+        foreach ($oldFiles as $file) {
+            $patient->addXRayFile($file);
+        }
+
+        $maxFileId = $this->xRayFileService->getLastFileId();
+
+        $this->xRayFileService->uploadXRayFiles(
+            $patient->getXRayFile()->unwrap(),
+            $patient->getName()."_".$patient->getSurname(),
+            $maxFileId
+        );
+
         $this->saveChanges();
     }
 

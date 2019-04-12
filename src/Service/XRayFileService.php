@@ -20,11 +20,12 @@ class XRayFileService
         $this->xRayFileRepository = $xRayFileRepository;
     }
 
-    public function uploadXRayFiles(ArrayCollection $xRayFiles): void
+    public function uploadXRayFiles(ArrayCollection $xRayFiles, string $patientName, int $maxFileId): void
     {
         foreach ($xRayFiles as $file) {
             if ($file->getXRayFile() != null) {
-                $fileName = $this->xRayFileManager->upload($file->getXRayFile());
+                $maxFileId++;
+                $fileName = $this->xRayFileManager->upload($file->getXRayFile(), $patientName.'_'.$maxFileId );
                 $file->setFileName($fileName);
             }
         }
@@ -35,5 +36,12 @@ class XRayFileService
         $file = $this->xRayFileRepository->findOneBy(['id' => $id]);
         $this->xRayFileManager->deleteFile($file->getFileName());
         $this->xRayFileRepository->delete($file);
+    }
+
+    public function getLastFileId(): int
+    {
+        return $this->xRayFileRepository
+            ->findOneBy([], ['id' => 'desc'])
+            ->getId();
     }
 }

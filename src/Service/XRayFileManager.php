@@ -21,9 +21,9 @@ class XRayFileManager
         $this->fileSystem = $fileSystem;
     }
 
-    public function upload(UploadedFile $file): string
+    public function upload(UploadedFile $file, string $fileName): string
     {
-        $fileName = md5(uniqid()).'.'.$file->guessExtension();
+        $fileName = $fileName.'.'.$file->guessExtension();
 
         try {
             $file->move($this->getTargetDirectory(), $fileName);
