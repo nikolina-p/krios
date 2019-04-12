@@ -4,9 +4,6 @@ namespace App\Service;
 
 use App\Entity\XRayFile;
 use App\Repository\XRayFileRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\PersistentCollection;
-use Symfony\Component\Validator\Constraints\Collection;
 
 class XRayFileService
 {
@@ -20,15 +17,19 @@ class XRayFileService
         $this->xRayFileRepository = $xRayFileRepository;
     }
 
-    public function uploadXRayFiles(ArrayCollection $xRayFiles, string $patientName, int $maxFileId): void
+    public function uploadXRayFile(XRayFile $xRayFile): void
     {
-        foreach ($xRayFiles as $file) {
-            if ($file->getXRayFile() != null) {
-                $maxFileId++;
-                $fileName = $this->xRayFileManager->upload($file->getXRayFile(), $patientName.'_'.$maxFileId );
-                $file->setFileName($fileName);
-            }
+        $maxFileId = $this->getLastFileId();
+
+        if ($xRayFile->getXRayFile() != null) {
+            $maxFileId++;
+            $fileName = $this->xRayFileManager->upload(
+                $xRayFile->getXRayFile(),
+                $xRayFile->getPatient()->getName().'_'.$xRayFile->getPatient()->getSurname().'_'.$maxFileId );
+            $xRayFile->setFileName($fileName);
         }
+
+        $this->xRayFileRepository->persist($xRayFile);
     }
 
     public function deleteXRayFile(int $id): void
@@ -40,8 +41,10 @@ class XRayFileService
 
     public function getLastFileId(): int
     {
-        return $this->xRayFileRepository
-            ->findOneBy([], ['id' => 'desc'])
-            ->getId();
+        $lastRow = $this->xRayFileRepository->findOneBy([], [
+            'id' => 'desc'
+        ]);
+
+        return !is_null($lastRow) ? $lastRow->getId() : 0;
     }
 }

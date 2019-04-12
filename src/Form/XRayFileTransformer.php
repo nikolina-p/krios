@@ -15,25 +15,18 @@ class XRayFileTransformer implements DataTransformerInterface
      * Transforms an array of Photos to an array of UploadedFile objects.
      *
      */
-    public function transform($xRayFiles): ?ArrayCollection
+    public function transform($xRayFile): ?UploadedFile
     {
-        if (count($xRayFiles) == 0) {
-            return null;
-        }
-        return $xRayFiles->unwrap();
+        return $xRayFile->getXRayFile();
     }
 
     /**
      * Transforms a UploadedFile to a Photo.
      *
      */
-    public function reverseTransform($uploadedFiles): ?ArrayCollection
+    public function reverseTransform($uploadedFile): ?XRayFile
     {
-        array_walk($uploadedFiles, function (&$file) {
-            $xRayFile = new XRayFile();
-            $file = $xRayFile->setXRayFile($file);
-        });
-
-        return new ArrayCollection($uploadedFiles);
+        $xRayFile = new XRayFile();
+        return $xRayFile->setXRayFile($uploadedFile);
     }
 }

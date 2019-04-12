@@ -11,7 +11,7 @@
             <a href="{{ asset('uploads/xRay/'~file.fileName) }}">
                 <img src="{{ asset('uploads/design/xRay_1.jpeg') }}" class="xRayIcon">
             </a>
-            <p class="xRaySubs">10.4.2019</p>
+            <p class="xRaySubs">{{ file.showDate }}</p>
             <a href="">
                 <img src="{{ asset('uploads/design/trashcan.png') }}" class="trashIcon"
                      onclick="deleteFile('{{ file.id }}')">
@@ -22,11 +22,11 @@
     <div class="uploadForm">
         {{ form_start(form) }}
         {{ form_row(form.xRayFile) }}
+        {{ form_row(form.date) }}
         <button type="submit">Upload</button>
         {{ form_end(form) }}
     </div>
 
-    <br><br>
-
-        <span><a href="{{ path('edit_patient', { 'id': patient.id }) }}">Edit data</a></span><br>
+    <br>
+    <span><a href="{{ path('edit_patient', { 'id': patient.id }) }}">Edit data</a></span><br>
 {% endblock %}

@@ -40,24 +40,6 @@ class PatientService
         return $this->patientRepository->searchPatients($patientDTO->getSearchTerm());
     }
 
-    public function uploadFiles(Patient $patient)
-    {
-        $oldFiles = $patient->getXRayFile()->getSnapshot();
-        foreach ($oldFiles as $file) {
-            $patient->addXRayFile($file);
-        }
-
-        $maxFileId = $this->xRayFileService->getLastFileId();
-
-        $this->xRayFileService->uploadXRayFiles(
-            $patient->getXRayFile()->unwrap(),
-            $patient->getName()."_".$patient->getSurname(),
-            $maxFileId
-        );
-
-        $this->saveChanges();
-    }
-
     public function deleteXRayFile(int $id)
     {
         $this->xRayFileService->deleteXRayFile($id);
