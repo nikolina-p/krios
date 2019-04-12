@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Patient;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
@@ -25,8 +26,11 @@ class PatientForm extends AbstractType
                 'expanded' => true,
                 'multiple' => false,
                 ])
-        ->add('phone', TextType::class, ['label' => 'Telefon'])
-        ->add('email', EmailType::class, ['label' => 'e-mail']);
+            ->add('phone', TextType::class, ['label' => 'Telefon'])
+            ->add('email', EmailType::class, ['label' => 'e-mail'])
+            ->add('registrationDate', DateType::class, [
+                'widget' => 'single_text',
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

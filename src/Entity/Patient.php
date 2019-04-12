@@ -49,6 +49,11 @@ class Patient
      */
     private $xRayFile;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $registrationDate;
+
     public function __construct()
     {
         $this->xRayFile = new ArrayCollection();
@@ -150,5 +155,17 @@ class Patient
     public function setXRayFiles(ArrayCollection $files): void
     {
         $this->xRayFile = $files;
+    }
+
+    public function getRegistrationDate(): ?\DateTimeInterface
+    {
+        return $this->registrationDate;
+    }
+
+    public function setRegistrationDate(\DateTimeInterface $registrationDate): self
+    {
+        $this->registrationDate = $registrationDate;
+
+        return $this;
     }
 }
