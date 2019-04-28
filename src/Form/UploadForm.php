@@ -11,13 +11,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class UploadForm extends AbstractType
 {
-    private $xRayFileTransformer;
-
-    public function __construct(XRayFileTransformer $xRayFileTransformer)
-    {
-        $this->xRayFileTransformer = $xRayFileTransformer;
-    }
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -27,8 +20,6 @@ class UploadForm extends AbstractType
             ->add('date', DateType::class, [
                 'widget' => 'single_text',
                 ]);
-
-        //$builder->get('xRayFile')->addModelTransformer($this->xRayFileTransformer);
     }
 
     public function configureOptions(OptionsResolver $resolver)
