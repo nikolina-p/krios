@@ -58,7 +58,10 @@ class PatientController extends AbstractController
      */
     public function newPatient(Request $request)
     {
-        $form = $this->createForm(PatientForm::class, $patient = (new Patient())->setGender('MALE'));
+        $patient = new Patient();
+        $patient->setGender('MALE');
+        $patient->setRegistrationDate(new \DateTime('now'));
+        $form = $this->createForm(PatientForm::class, $patient);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
