@@ -100,7 +100,9 @@ class PatientController extends AbstractController
      */
     public function loadPatient(Request $request, Patient $patient)
     {
-        $form = $this->createForm(UploadForm::class, $xRayFile = new XRayFile());
+        $form = $this->createForm(UploadForm::class,
+            $xRayFile = (new XRayFile())->setDate(new \DateTime('now'))
+        );
 
         $form->handleRequest($request);
 
