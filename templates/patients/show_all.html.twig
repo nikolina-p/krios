@@ -1,31 +1,53 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <div id="search">
-        {{ form_start(form) }}
-        <span>{{ form_row(form.searchTerm) }}</span>
-        {{ form_end(form) }}
-    </div>
-    <br>
-    <table id="patients">
-        <tr>
-            <td>ID</td>
-            <td>Ime</td>
-            <td>Prezime</td>
-            <td>Telefon</td>
-        </tr>
-        {% for patient in patients %}
-        <tr class="selectable_row" onclick="showPatient('{{ patient.id }}')">
-            <td>{{ patient.id }}</td>
-            <td>{{ patient.name }}</td>
-            <td>{{ patient.surname }}</td>
-            <td>{{ patient.phone }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <div class="column_75 leftSidebar">
+        <div id="patients">
+            {% for row in patients|batch(3, "") %}
+                <div class="row">
+                    {% for patient in row %}
+                        {% if patient != "" %}
+                            <div class="selectable_row patientBox column_30" onclick="showPatient('{{ patient.id }}')">
+                                <div class="patientImage column_25">
+                                    <img src="{{ asset('uploads/design/'~patient.gender~'.png') }}" class="patientIcon">
+                                </div>
+                                <div class="patientData column_70">
+                                    <p class="text">{{ patient.id }}</p>
+                                    <p class="text x-small">{{ patient.name~' '~patient.surname }}</p>
+                                    <p class="text x-small">{{ patient.phone }}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
         {% if patients|length == 0 %}
             <h4>No patients found</h4>
         {% endif %}
+    </div>
+    <div id="search" class="column_25 middleBox">
+        <div class="searchForm">
+            {{ form_start(form) }}
+            <div class="column_85 leftSidebar">
+                {{ form_row(form.searchTerm) }}
+            </div>
+            <div class="column_13 rightSidebar">
+                <img src="{{ asset('uploads/design/search-70.png') }}" class="searchIcon">
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
         <br>
-        <span><a href="{{ path('new_patient') }}">New patient</a></span><br>
 {% endblock %}
+{% block sidebar %}
+    <div class="sidelink">
+        <a href="{{ path('new_patient') }}" class="sidelink">Novi pacijent</a>
+    </div>
+    {{ parent() }}
+{% endblock %}
+
+{#  <div>Icons made by <a href="https://www.flaticon.com/authors/eucalyp" title="Eucalyp">Eucalyp</a> from
+<a href="https://www.flaticon.com/"title="Flaticon">www.flaticon.com</a>
+is licensed by
+<a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>#}

@@ -1,5 +1,35 @@
+body{
+    background-color: #ecf8f9;
+}
+a#logout{
+    font-size: xx-small;
+    float: right;
+}
+div.userdata{
+    float: right;
+}
+.userdata p{
+    float: right;
+}
+div.home{
+    float: left;
+}
+.homeIcon{
+    width: 1.2em;
+    margin-left: 10px;
+}
+
+
+.selectable_row{
+    border: solid #ecf8f9;
+    border-width: 1px;
+}
 .selectable_row:hover{
-    background-color: #ffcc00;
+    background-color: aquamarine;
+    border: solid black;
+    border-width: 1px;
+    border-radius: 10px;
+    cursor: pointer;
 }
 .selectable_link:hover{
     text-decoration: underline;
@@ -26,4 +56,109 @@
 }
 .trashIcon:hover{
     transform: scale(.8);
+}
+.row{
+    clear: both;
+    display: block;
+    width: 100%;
+}
+.mainPage{
+    border-top: solid;
+    border-top-width: 1px;
+}
+.mainBox{
+    float: left;
+    border-right: solid;
+    border-right-width: 1px;
+}
+.column_85{
+    width: 85%;
+}
+.column_13{
+    width: 13%;
+}
+.column_25{
+    width: 25%;
+}
+.column_30{
+    width: 30%;
+}
+.column_70{
+    width: 70%;
+}
+.column_75{
+    width: 75%;
+}
+.rightSidebar{
+    float: right;
+}
+.middleBox{
+    float: left;
+}
+.leftSidebar{
+    float: left;
+}
+p.text{
+    margin: 0px;
+}
+p.underline{
+    border-bottom: solid;
+    border-width: 1px;
+}
+
+
+#patients{
+    margin: 20px;
+}
+div.patientBox{
+    float: left;
+    padding: 2px;
+    margin-bottom: 10px;
+}
+div.patientImage{
+    float: left;
+    display: flex;
+ }
+.patientIcon{
+    width: 4em;
+}
+div.patientData{
+    float: right;
+}
+p.x-small{
+    font-size: .6em;
+}
+div.searchForm{
+    margin-top: 20px;
+    padding-left: 10px;
+    overflow: hidden;
+}
+.searchIcon{
+    width: 1.2em;
+    margin-left: 2px;
+    margin-top: 2px;
+}
+#search_form_searchTerm{
+    width: 90%;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border-radius: 20px;
+    border: solid 1px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+}
+div.sidelink{
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-bottom: solid 1px;
+}
+a.sidelink{
+    font-size: x-small;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-decoration: none;
+}
+.sidebarLinks{
+    margin-top: 10px;
 }
