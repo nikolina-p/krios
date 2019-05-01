@@ -11,11 +11,11 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        $surnames = ['Pavkovic', "Karajcic", "Mostarac", 'Smith', 'Stegic', 'Boskovic', 'Walsh', 'Jovanovic', 'Model',
-            'Kalloch', 'Lawnsby', 'Johnson', 'Wong', 'Prefer', 'McLean'];
-        $names = ['Maja'=>'FEMALE', 'Jovan'=>'MALE', 'Sanja'=>'FEMALE', 'Nick'=>'MALE', 'Nikola'=>'MALE',
-            'Marija'=>'FEMALE', 'Ivana'=>'FEMALE', 'Milos'=>'MALE', 'Mark'=>'MALE', 'Jeff'=>'MALE', 'Dough'=>'MALE',
-            'Andrew'=>'MALE', 'Keran'=>'MALE', 'Rebecka'=>'FEMALE'];
+        $surnames = ['Pavkovic', "Karajcic", "Mostarac", 'Loncar', 'Stegic', 'Boskovic', 'Jocic', 'Jovanovic', 'Stefanovic',
+            'Nikolic', 'Markovic', 'Antic', 'Vukovic', 'Prefer', 'Mihajlovic', 'Prodanovic Stojanovic', 'Milovanovic Sretenovic'];
+        $names = ['Maja'=>'FEMALE', 'Jovan'=>'MALE', 'Sanja'=>'FEMALE', 'Aleksandar'=>'MALE', 'Nikola'=>'MALE',
+            'Marija'=>'FEMALE', 'Ivana'=>'FEMALE', 'Milos'=>'MALE', 'Ivan'=>'MALE', 'Goran'=>'MALE', 'Zoran'=>'MALE',
+            'Ilija'=>'MALE', 'Marko'=>'MALE', 'Marija Ana'=>'FEMALE', 'Jelena'=>'FEMALE', 'Marija Ilena'=>'FEMALE'];
 
         for($i = 0; $i<200; $i++) {
             $patient = new Patient();

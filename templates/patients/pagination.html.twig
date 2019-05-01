@@ -1,0 +1,14 @@
+<div class="pagination">
+    {% set pageNumber = 1 %}
+        {% if patients|length > 18 %}
+                {% for group in patients|batch(18, "") %}
+                        <a href="{{ path('homepage', {'page': pageNumber}) }}"
+                           class="paginationLink" {% if pageNumber == page %} id="active" {% endif %}>
+                                {{ pageNumber }}
+                        </a>
+                        {% set pageNumber = pageNumber + 1 %}
+                {% endfor %}
+        {% endif %}
+
+</div>
+

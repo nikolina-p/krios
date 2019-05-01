@@ -31,10 +31,10 @@ class PatientController extends AbstractController
     }
 
     /**
-     * @Route ("/", name = "homepage")
+     * @Route ("/{page}", name = "homepage")
      * @Security("is_granted('ROLE_USER')")
      */
-    public function showAll(Request $request)
+    public function showAll(Request $request, $page = 1)
     {
         $form = $this->createForm(SearchForm::class, $patientDTO = new PatientDTO());
 
@@ -48,6 +48,7 @@ class PatientController extends AbstractController
 
         return $this->render("patients/show_all.html.twig", [
             "patients" => $patients,
+            "page" => $page,
             "form" => $form->createView(),
         ]);
     }

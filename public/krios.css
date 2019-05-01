@@ -201,3 +201,26 @@ a.sidelink{
 .sidebarLinks{
     margin-top: 10px;
 }
+
+.pagination{
+    margin-left: 20px;
+}
+.paginationLink{
+    text-decoration: none;
+    display: inline;
+    margin-left: 1px;
+    margin-right: 1px;
+    font-size: xx-small;
+    padding-left: 3px;
+    color: #916319;
+    border: 1px solid #ecf8f9;
+}
+.paginationLink:hover{
+    background-color: aquamarine;
+    border: 1px solid;
+    border-radius: 3px;
+}
+a#active{
+    color: orangered;
+    font-weight: bold;
+}
