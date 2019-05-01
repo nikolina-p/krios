@@ -14,7 +14,7 @@
             {% if is_granted('ROLE_USER') %}
                 <div class="row">
                     <div class="home column_25">
-                        <a href="{{ path('homepage') }}">
+                        <a href="{{ path('homepage', {'page': 1}) }}" class="x-small">
                             <img src="{{ asset('uploads/design/patients.png') }}" class="homeIcon">
                         </a>
                     </div>
@@ -39,6 +39,9 @@
         <div class="column_13 rightSidebar">
             <div class="sidebarLinks">
                 {% block sidebar %}
+                    <div class="sidelink">
+                        <a href="{{ path('new_patient') }}" class="sidelink">Novi pacijent</a>
+                    </div>
                     <div class="sidelink">
                         <a href="{{ path('manage_users') }}" class="sidelink">Administracija korisnika</a>
                     </div>

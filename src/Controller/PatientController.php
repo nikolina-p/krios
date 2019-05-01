@@ -31,7 +31,7 @@ class PatientController extends AbstractController
     }
 
     /**
-     * @Route ("/{page}", name = "homepage")
+     * @Route ("/krios/{page}", name = "homepage")
      * @Security("is_granted('ROLE_USER')")
      */
     public function showAll(Request $request, $page = 1)
@@ -70,7 +70,8 @@ class PatientController extends AbstractController
             return $this->redirectToRoute('homepage');
         }
         return $this->render('patients/patient_form.html.twig', array(
-            'form' => $form->createView(), 'patient' => $patient
+            'form' => $form->createView(),
+            'patient' => $patient
         ));
     }
 
