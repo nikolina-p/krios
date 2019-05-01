@@ -27,7 +27,10 @@ class PatientForm extends AbstractType
                 'multiple' => false,
                 ])
             ->add('phone', TextType::class, ['label' => 'Telefon'])
-            ->add('email', EmailType::class, ['label' => 'e-mail'])
+            ->add('email', EmailType::class, [
+                'label' => 'e-mail',
+                'required' => false
+            ])
             ->add('registrationDate', DateType::class, [
                 'widget' => 'single_text',
             ]);
