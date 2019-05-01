@@ -90,6 +90,9 @@ div.home{
 .column_85{
     width: 85%;
 }
+.column_15{
+    width: 15%;
+}
 .column_13{
     width: 13%;
 }
@@ -147,18 +150,33 @@ p.x-small{
 p.xx-small{
     font-size: .5em;
 }
+p.fileNumber{
+    color: orangered;
+    border-bottom: 1px solid orangered;
+}
+
 div.searchForm{
     margin-top: 20px;
     padding-left: 10px;
     overflow: hidden;
 }
+button.invisible{
+    background-color: #ecf8f9;
+    border: #ecf8f9;
+    padding: 0px;
+    margin-left: 4px;
+    transition: transform .25s ease;
+}
+button.invisible:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
 .searchIcon{
-    width: 1.2em;
-    margin-left: 2px;
-    margin-top: 2px;
+    width: 2em;
+    margin-top: 4px;
 }
 #search_form_searchTerm{
-    width: 90%;
+    width: 100%;
     margin-top: 2px;
     margin-bottom: 2px;
     border-radius: 20px;
@@ -167,6 +185,7 @@ div.searchForm{
     padding-bottom: 5px;
     padding-left: 20px;
 }
+
 div.sidelink{
     padding-bottom: 10px;
     padding-top: 10px;

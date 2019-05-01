@@ -12,7 +12,7 @@
                                     <img src="{{ asset('uploads/design/'~patient.gender~'.png') }}" class="patientIcon">
                                 </div>
                                 <div class="patientData column_70">
-                                    <p class="text">{{ patient.id }}</p>
+                                    <p class="text fileNumber">{{ patient.id }}</p>
                                     <p class="text x-small">{{ patient.name~' '~patient.surname }}</p>
                                     <p class="text x-small">{{ patient.phone }}
                                 </div>
@@ -32,8 +32,10 @@
             <div class="column_85 leftSidebar">
                 {{ form_row(form.searchTerm) }}
             </div>
-            <div class="column_13 rightSidebar">
-                <img src="{{ asset('uploads/design/search-70.png') }}" class="searchIcon">
+            <div class="column_15 rightSidebar">
+                <button class="invisible" type="submit">
+                    <img src="{{ asset('uploads/design/search-70.png') }}" class="searchIcon">
+                </button>
             </div>
             {{ form_end(form) }}
         </div>
