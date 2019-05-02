@@ -86,7 +86,9 @@ class PatientController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->patientService->saveChanges($patient);
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('show_patient', [
+                'id' => $patient->getId()
+            ]);
         }
 
         return $this->render('patients/patient_form.html.twig', [
