@@ -1,14 +1,40 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    {{ form_start(form) }}
-    {{ form_row(form.name) }}
-    {{ form_row(form.surname) }}
-    {{ form_row(form.gender) }}
-    {{ form_row(form.phone) }}
-    {{ form_row(form.email) }}
-    {{ form_row(form.registrationDate) }}
-    <br>
-    <button type="submit">Save</button>
-    {{ form_end(form) }}
+    <div id="patientForm">
+        <h3>Unos novog pacijenta</h3>
+        {{ form_start(form) }}
+        <table id="patientForm">
+            <tr>
+                <td class="label">Ime</td>
+                <td>{{ form_row(form.name) }}</td>
+            </tr>
+            <tr>
+                <td class="label">Prezime</td>
+                <td>{{ form_row(form.surname) }}</td>
+            </tr>
+            <tr>
+                <td class="label">Pol</td>
+                <td>{{ form_row(form.gender) }}</td>
+            </tr>
+            <tr>
+                <td class="label">Telefon</td>
+                <td>{{ form_row(form.phone) }}</td>
+            </tr>
+            <tr>
+                <td class="label">Email</td>
+                <td>{{ form_row(form.email) }}</td>
+            </tr>
+            <tr>
+                <td class="label">Datum unosa</td>
+                <td>{{ form_row(form.registrationDate) }}</td>
+            </tr>
+        </table>
+
+
+        <br>
+        <button class="patientForm" type="submit">UNESI PACIJENTA</button>
+        {{ form_end(form) }}
+    </div>
+
 {% endblock %}

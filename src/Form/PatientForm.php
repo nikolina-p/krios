@@ -15,24 +15,25 @@ class PatientForm extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name', TextType::class, ['label' => 'Ime'])
-            ->add('surname', TextType::class, ['label' => 'Prezime'])
+        $builder->add('name', TextType::class, ['label' => false])
+            ->add('surname', TextType::class, ['label' => false])
             ->add('gender', ChoiceType::class, [
                 'choices' => [
                     'M' => 'MALE',
                     'Ž' => 'FEMALE'
                 ],
-                'label' => 'Pol',
+                'label' => false,
                 'expanded' => true,
                 'multiple' => false,
                 ])
-            ->add('phone', TextType::class, ['label' => 'Telefon'])
+            ->add('phone', TextType::class, ['label' => false])
             ->add('email', EmailType::class, [
-                'label' => 'e-mail',
+                'label' => false,
                 'required' => false
             ])
             ->add('registrationDate', DateType::class, [
                 'widget' => 'single_text',
+                'label' => false
             ]);
     }
 

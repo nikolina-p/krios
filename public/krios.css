@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    font-family: Quicksand;
 }
 body{
     background-color: #ecf8f9;
@@ -203,7 +204,7 @@ a.sidelink{
 }
 
 .pagination{
-    margin-left: 20px;
+    margin-left: 30px;
 }
 .paginationLink{
     text-decoration: none;
@@ -223,4 +224,51 @@ a.sidelink{
 a#active{
     color: orangered;
     font-weight: bold;
+}
+
+div#patientForm{
+    text-align: center;
+    border: 1px solid orangered;
+    background-color: white;
+    width: 35%;
+    margin: auto;
+    margin-top: 1em;
+    padding: .8em;
+}
+table#patientForm{
+    margin: auto;
+    text-align: left;
+    color: #916319;
+}
+table#patientForm td{
+    padding: 4px;
+    border-right: none;
+}
+.label{
+    font-size: x-small;
+    color: #916319;
+    text-align: left;
+}
+h3{
+    color: #916319;
+    border-bottom: 1px solid orangered;
+    padding-bottom: .6em;
+}
+input{
+    border: 1px solid black;
+    padding: 3px;
+    border-radius: 2px;
+    font-family: Noto Serif;
+}
+div#patient_form_gender{
+    font-size: x-small;
+}
+button.patientForm{
+    background-color: orangered;
+    border: orangered;
+    width: 80%;
+    padding: .7em;
+    margin-bottom: .6em;
+    font-weight: bold;
+    cursor: pointer;
 }
