@@ -52,28 +52,9 @@ div.home{
     text-decoration: underline;
     color: blue;
 }
-.xRaySpan{
-    float: left;
-    margin-right: 10px;
-    border: solid black 1px;
-}
-.xRayIcon{
-    width: 5em;
-}
-.xRaySubs{
-    font-size: .5em;
-    margin-top: 0px;
-}
-.uploadForm{
-    clear: both;
-}
-.trashIcon{
-    width: 1em;
-    transition: transform .25s ease;
-}
-.trashIcon:hover{
-    transform: scale(.8);
-}
+
+
+
 .row{
     clear: both;
     display: block;
@@ -105,6 +86,9 @@ div.home{
 }
 .column_45{
     width: 45%;
+}
+.column_60{
+    width: 60%;
 }
 .column_70{
     width: 70%;
@@ -152,6 +136,9 @@ div.patientImage{
 }
 div.patientData{
     float: right;
+}
+p.small{
+    font-size: .9em;
 }
 p.x-small{
     font-size: .6em;
@@ -263,6 +250,12 @@ h3{
     border-bottom: 1px solid orangered;
     padding-bottom: .6em;
 }
+p.title{
+    color: #916319;
+    font-weight: bold;
+    border-bottom: 1px solid orangered;
+    margin: 0px 0px 5px 0px;
+}
 input{
     border: 1px solid black;
     padding: 3px;
@@ -285,6 +278,8 @@ button.patientForm{
 button.patientForm:hover{
     background-color: darkorange;
 }
+
+
 .patientPage{
     padding: 20px;
     color: #916319;
@@ -300,13 +295,69 @@ div.patientPage td{
 a.buttonLink{
     background-color: orangered;
     text-decoration: none;
-    font-size: .5em;
-    color: black;
+    font-size: .8em;
+    color: #916319;
     text-align: center;
-    padding: .5em 1.5em;
+    padding: .5em .5em;
     border-radius: 2px;
-    transition: transform .25s ease;
 }
 a.buttonLink:hover{
     background-color: darkorange;
+}
+div.patientPageFirst{
+    text-align: center;
+    padding: 10px;
+}
+.patientPageImage{
+    margin-bottom: 20px;
+}
+.xRaySpan{
+    text-align: center;
+    float: left;
+    margin-right: 10px;
+}
+.xRayIcon{
+    width: 3em;
+}
+.xRaySubs{
+    font-size: .5em;
+    margin-top: 0px;
+}
+.xRayRow{
+    margin-bottom: 10px;
+    text-align: left;
+}
+.uploadForm{
+    padding: 20px 20px 10px 20px;
+    border: 1px solid orangered;
+    border-radius: 3px;
+    width: 60%;
+    background-color: white;
+    text-align: center;
+    font-size: .8em;
+}
+input#upload_form_xRayFile {
+    display: none;
+}
+.custom-file-upload {
+    height: 31px;
+    background-color: orangered;
+    border: 1px solid orangered;
+    border-radius: 2px;
+    display: inline-block;
+    padding: 8px 20px 0 20px;
+    font-weight: bold;
+    font-size: .8em;
+    cursor: pointer;
+}
+.custom-file-upload:hover {
+    background-color: darkorange;
+}
+
+.trashIcon{
+    width: 1em;
+    transition: transform .25s ease;
+}
+.trashIcon:hover{
+    transform: scale(.8);
 }

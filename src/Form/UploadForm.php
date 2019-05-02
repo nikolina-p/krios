@@ -15,10 +15,11 @@ class UploadForm extends AbstractType
     {
         $builder
             ->add('xRayFile', FileType::class,[
-                'label' => 'Upload xRay',
+                'label' => false,
                 ])
             ->add('date', DateType::class, [
                 'widget' => 'single_text',
+                'label' => false
                 ]);
     }
 

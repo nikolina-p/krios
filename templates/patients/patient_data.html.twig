@@ -2,13 +2,16 @@
 
 {% block body %}
     <div class="row clearfix patientPage">
-        <div class="column_50 leftSidebar">
-            <div class="column_25 leftSidebar">
-                <img class="patientIconBig" src="{{ asset('uploads/design/'~patient.gender~'.png') }}">
-                <br>
-                <a class="buttonLink" href="{{ path('edit_patient', { 'id': patient.id }) }};">IZMENI PODATKE</a>
+        <div class="column_45 leftSidebar">
+            <div class="column_30 leftSidebar patientPageFirst">
+                <div class="patientPageImage">
+                    <img class="patientIconBig" src="{{ asset('uploads/design/'~patient.gender~'.png') }}">
+                </div>
+                <div class="editPatientButton">
+                    <a class="buttonLink" href="{{ path('edit_patient', { 'id': patient.id }) }};">Izmeni podatke</a>
+                </div>
             </div>
-            <div class="column_75 rightSidebar">
+            <div class="column_70 rightSidebar patientData">
                 <p class="text fileNumber">Broj kartona:
                     <small style="font-size: small; ">{{ patient.id }}</small></p>
                 <table>
@@ -36,25 +39,45 @@
         </div>
 
 
-        <div class="column_50 rightSidebar">
-            {% for file in patient.xRayFile %}
-                <span id="{{ file.id }}" class="xRaySpan">
-            <a href="{{ asset('uploads/xRay/'~file.fileName) }}">
-                <img src="{{ asset('uploads/design/xRay_1.jpeg') }}" class="xRayIcon">
-            </a>
-            <p class="xRaySubs">{{ file.showDate }}</p>
-            <a href="">
-                <img src="{{ asset('uploads/design/trashcan.png') }}" class="trashIcon"
-                     onclick="deleteFile('{{ file.id }}')">
-            </a>
-        </span>
-            {% endfor %}
+        <div class="column_45 rightSidebar">
+            <div class="xRay clearfix">
+                <p class="title">Rendgen snimci pacijenta</p>
+                {% for file in patient.xRayFile %}
+                    <span id="{{ file.id }}" class="xRaySpan">
+                    <a href="{{ asset('uploads/xRay/'~file.fileName) }}">
+                        <img src="{{ asset('uploads/design/16.png') }}" class="xRayIcon">
+                    </a>
+                    <p class="xRaySubs">{{ file.showDate }}</p>
+                    <a href="">
+                        <img src="{{ asset('uploads/design/trash 12.png') }}" class="trashIcon"
+                             onclick="deleteFile('{{ file.id }}')">
+                    </a>
+                </span>
+                {% endfor %}
+            </div>
             <br>
-            <div class="uploadForm">
+            <div class="uploadForm clearfix">
                 {{ form_start(form) }}
-                {{ form_row(form.xRayFile) }}
-                {{ form_row(form.date) }}
-                <button type="submit">Upload</button>
+                <div class="row clearfix xRayRow">
+                    <div class="column_45 leftSidebar">
+                        <p class="text small">Dodaj fajl: </p>
+                    </div>
+                    <div class="column_45 rightSidebar">
+                        <label for="upload_form_xRayFile" class="custom-file-upload">
+                            Browse...
+                        </label>
+                        {{ form_row(form.xRayFile) }}
+                    </div>
+                </div>
+                <div class="row clearfix xRayRow">
+                    <div class="column_45 leftSidebar">
+                        <p class="text small">Datum snimka: </p>
+                    </div>
+                    <div class="column_45 rightSidebar">
+                        {{ form_row(form.date) }}
+                    </div>
+                </div>
+                <button class="patientForm" type="submit">Upload</button>
                 {{ form_end(form) }}
             </div>
         </div>
