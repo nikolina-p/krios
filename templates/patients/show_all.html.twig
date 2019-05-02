@@ -13,7 +13,8 @@
                                     <img src="{{ asset('uploads/design/'~patient.gender~'.png') }}" class="patientIcon">
                                 </div>
                                 <div class="patientData column_70">
-                                    <p class="text fileNumber">{{ patient.id }}</p>
+                                    <p class="text x-small fileNumber">Broj kartona:
+                                        <small style="font-size: small; ">{{ patient.id }}</small></p>
                                     <p class="text x-small">{{ patient.name~' '~patient.surname }}</p>
                                     <p class="text x-small">{{ patient.phone }}
                                 </div>

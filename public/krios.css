@@ -129,11 +129,13 @@ p.underline{
 
 #patients{
     margin: 20px;
+    margin-left: 5px;
 }
 div.patientBox{
     float: left;
     padding: 2px;
     margin-bottom: 10px;
+    margin-left: 10px;
 }
 div.patientImage{
     float: left;
@@ -154,6 +156,7 @@ p.xx-small{
 p.fileNumber{
     color: orangered;
     border-bottom: 1px solid orangered;
+    margin-bottom: 4px;
 }
 
 div.searchForm{
