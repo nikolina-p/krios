@@ -1,13 +1,44 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    Broj kartona: <b>{{ patient.id }}</b><br>
-    Ime i prezime: {{ patient.name~' '~patient.surname }} <br>
-    Telefon: {{ patient.phone }}<br>
-    Email: {{ patient.email }}<br>
-    Pol: {{ patient.gender }}<br>
-    {% for file in patient.xRayFile %}
-        <span id="{{ file.id }}" class="xRaySpan">
+    <div class="row clearfix patientPage">
+        <div class="column_50 leftSidebar">
+            <div class="column_25 leftSidebar">
+                <img class="patientIconBig" src="{{ asset('uploads/design/'~patient.gender~'.png') }}">
+                <br>
+                <a class="buttonLink" href="{{ path('edit_patient', { 'id': patient.id }) }};">IZMENI PODATKE</a>
+            </div>
+            <div class="column_75 rightSidebar">
+                <p class="text fileNumber">Broj kartona:
+                    <small style="font-size: small; ">{{ patient.id }}</small></p>
+                <table>
+                    <tr>
+                        <td class="label">Ime i prezime:</td>
+                        <td>{{ patient.name~' '~patient.surname }}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Telefon: </td>
+                        <td>{{ patient.phone }}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Email: </td>
+                        <td>{{ patient.email }}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Datum unosa pacijenta:</td>
+                        <td>{{ patient.prettyRegistrationDate }}</td>
+                    </tr>
+                </table>
+                  <br>
+                <br>
+                <br>
+            </div>
+        </div>
+
+
+        <div class="column_50 rightSidebar">
+            {% for file in patient.xRayFile %}
+                <span id="{{ file.id }}" class="xRaySpan">
             <a href="{{ asset('uploads/xRay/'~file.fileName) }}">
                 <img src="{{ asset('uploads/design/xRay_1.jpeg') }}" class="xRayIcon">
             </a>
@@ -17,16 +48,16 @@
                      onclick="deleteFile('{{ file.id }}')">
             </a>
         </span>
-    {% endfor %}
-    <br>
-    <div class="uploadForm">
-        {{ form_start(form) }}
-        {{ form_row(form.xRayFile) }}
-        {{ form_row(form.date) }}
-        <button type="submit">Upload</button>
-        {{ form_end(form) }}
+            {% endfor %}
+            <br>
+            <div class="uploadForm">
+                {{ form_start(form) }}
+                {{ form_row(form.xRayFile) }}
+                {{ form_row(form.date) }}
+                <button type="submit">Upload</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
     </div>
 
-    <br>
-    <span><a href="{{ path('edit_patient', { 'id': patient.id }) }}">Edit data</a></span><br>
 {% endblock %}

@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use \DateTimeInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PatientRepository")
@@ -167,5 +168,14 @@ class Patient
         $this->registrationDate = $registrationDate;
 
         return $this;
+    }
+
+    public function getPrettyRegistrationDate(): string
+    {
+        if ($this->registrationDate === null) {
+            return 'unknown';
+        }
+
+        return $this->registrationDate->format('d. M Y.');
     }
 }

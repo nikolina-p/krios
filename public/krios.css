@@ -103,6 +103,9 @@ div.home{
 .column_30{
     width: 30%;
 }
+.column_45{
+    width: 45%;
+}
 .column_70{
     width: 70%;
 }
@@ -143,6 +146,9 @@ div.patientImage{
  }
 .patientIcon{
     width: 4em;
+}
+.patientIconBig{
+    width: 6em;
 }
 div.patientData{
     float: right;
@@ -269,9 +275,38 @@ div#patient_form_gender{
 button.patientForm{
     background-color: orangered;
     border: orangered;
+    border-radius: 2px;
     width: 80%;
     padding: .7em;
     margin-bottom: .6em;
     font-weight: bold;
     cursor: pointer;
+}
+button.patientForm:hover{
+    background-color: darkorange;
+}
+.patientPage{
+    padding: 20px;
+    color: #916319;
+    font-size: small;
+}
+div.patientPage table{
+    width: 100%;
+}
+div.patientPage td{
+    border-bottom: 1px solid orangered;
+    padding: 3px;
+}
+a.buttonLink{
+    background-color: orangered;
+    text-decoration: none;
+    font-size: .5em;
+    color: black;
+    text-align: center;
+    padding: .5em 1.5em;
+    border-radius: 2px;
+    transition: transform .25s ease;
+}
+a.buttonLink:hover{
+    background-color: darkorange;
 }
