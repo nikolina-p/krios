@@ -3,9 +3,11 @@ function showPatient(id){
 }
 
 function deleteFile(id){
-    let response = ajaxCall('/file/delete/'+id);
-    if (response.status == 204) {
-        document.getElementById(id).style.display = "none";
+    if(confirm("Obriši snimak?")){
+        let response = ajaxCall('/file/delete/'+id);
+        if (response.status == 204) {
+            document.getElementById(id).style.display = "none";
+        }
     }
 }
 
