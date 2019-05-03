@@ -63,9 +63,10 @@
                         <p class="text small">Dodaj fajl: </p>
                     </div>
                     <div class="column_45 rightSidebar">
-                        <label for="upload_form_xRayFile" class="custom-file-upload">
+                        <label for="upload_form_xRayFile" class="custom-file-upload" onclick="addChangeListener()">
                             Browse...
                         </label>
+                        <p id="fileSelected" class="text x-small"></p>
                         {{ form_row(form.xRayFile) }}
                     </div>
                 </div>

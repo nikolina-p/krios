@@ -38,3 +38,14 @@ function ajaxCall(route){
     ajax.send();
     return ajax;
 }
+
+function addChangeListener(){
+    document.getElementById('upload_form_xRayFile').addEventListener("change", isFileSelected);
+}
+
+function isFileSelected(){
+    let inputFile = document.getElementById('upload_form_xRayFile').value;
+    if(inputFile !== "") {
+        document.getElementById('fileSelected').innerHTML = "1 file selected.";
+    }
+}

@@ -176,6 +176,6 @@ class Patient
             return 'unknown';
         }
 
-        return $this->registrationDate->format('d. M Y.');
+        return $this->registrationDate->format('d M Y');
     }
 }

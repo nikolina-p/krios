@@ -19,7 +19,8 @@ class UploadForm extends AbstractType
                 ])
             ->add('date', DateType::class, [
                 'widget' => 'single_text',
-                'label' => false
+                'label' => false,
+                'model_timezone' => 'Europe/Belgrade',
                 ]);
     }
 
