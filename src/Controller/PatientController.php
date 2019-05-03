@@ -31,24 +31,28 @@ class PatientController extends AbstractController
     }
 
     /**
-     * @Route ("/krios/{page}", name = "homepage")
+     * @Route ("/krios/{page}/{term}", name = "homepage")
      * @Security("is_granted('ROLE_USER')")
      */
-    public function showAll(Request $request, $page = 1)
+    public function showAll(Request $request, $page = 1, $term = "")
     {
-        $form = $this->createForm(SearchForm::class, $patientDTO = new PatientDTO());
+        $form = $this->createForm(
+            SearchForm::class,
+            $patientDTO = (new PatientDTO())->setSearchTerm($term)
+        );
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-            $patients = $this->patientService->searchPatients($patientDTO);
-        } else {
-            $patients = $this->patientService->findAll();
+            $page = 1;
         }
 
+        $patients = $this->patientService->searchPatients($patientDTO);
+        
         return $this->render("patients/show_all.html.twig", [
             "patients" => $patients,
             "page" => $page,
+            "term" => $patientDTO->getSearchTerm(),
             "form" => $form->createView(),
         ]);
     }
@@ -65,6 +69,7 @@ class PatientController extends AbstractController
         $form = $this->createForm(PatientForm::class, $patient);
 
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $this->patientService->newPatient($patient);
             return $this->redirectToRoute('homepage');
