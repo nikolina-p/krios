@@ -227,8 +227,8 @@ div#patientForm{
     border: 1px solid orangered;
     background-color: white;
     width: 35%;
-    margin: auto;
-    margin-top: 1em;
+    margin:auto;
+    margin-top: 3em;
     padding: .8em;
 }
 table#patientForm{

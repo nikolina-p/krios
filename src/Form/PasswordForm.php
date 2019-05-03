@@ -14,12 +14,12 @@ class PasswordForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('oldPassword', PasswordType::class, [
-            'label' => 'Old password'
+            'label' => false
         ])
             ->add('newPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'first_options' => ['label' => 'New password'],
-                'second_options' => ['label' => 'Repeat Password']
+                'first_options' => ['label' => false],
+                'second_options' => ['label' => false]
             ]);
     }
 
