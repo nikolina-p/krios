@@ -48,7 +48,7 @@ class PatientController extends AbstractController
         }
 
         $patients = $this->patientService->searchPatients($patientDTO);
-        
+
         return $this->render("patients/show_all.html.twig", [
             "patients" => $patients,
             "page" => $page,

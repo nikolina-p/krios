@@ -44,7 +44,7 @@
                 <p class="title">Rendgen snimci pacijenta</p>
                 {% for file in patient.xRayFile %}
                     <span id="{{ file.id }}" class="xRaySpan">
-                    <a href="{{ asset('uploads/xRay/'~file.fileName) }}">
+                    <a href="{{ asset('uploads/xRay/'~file.fileName) }}" target="_blank">
                         <img src="{{ asset('uploads/design/16.png') }}" class="xRayIcon">
                     </a>
                     <p class="xRaySubs">{{ file.showDate }}</p>

@@ -1,8 +1,15 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
+    {% if patient.id != "" %}
+        {% set title = "Izmena podataka" %}
+        {% set buttonTitle = "SAČUVAJ IZMENE" %}
+    {% else %}
+        {% set title = "Unos novog pacijenta" %}
+        {% set buttonTitle = "UNESI PACIJENTA" %}
+    {% endif %}
     <div id="patientForm">
-        <h3>Unos novog pacijenta</h3>
+        <h3>{{ title }}</h3>
         {{ form_start(form) }}
         <table id="patientForm">
             <tr>
@@ -30,11 +37,8 @@
                 <td>{{ form_row(form.registrationDate) }}</td>
             </tr>
         </table>
-
-
         <br>
-        <button class="patientForm" type="submit">UNESI PACIJENTA</button>
+        <button class="patientForm" type="submit">{{ buttonTitle }}</button>
         {{ form_end(form) }}
     </div>
-
 {% endblock %}
