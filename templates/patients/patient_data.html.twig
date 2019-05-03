@@ -8,7 +8,7 @@
                     <img class="patientIconBig" src="{{ asset('uploads/design/'~patient.gender~'.png') }}">
                 </div>
                 <div class="editPatientButton">
-                    <a class="buttonLink" href="{{ path('edit_patient', { 'id': patient.id }) }};">Izmeni podatke</a>
+                    <a id="editPatient" class="buttonLink" href="{{ path('edit_patient', { 'id': patient.id }) }};">Izmeni</a>
                 </div>
             </div>
             <div class="column_70 rightSidebar patientData">

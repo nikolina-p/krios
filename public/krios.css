@@ -6,10 +6,6 @@ body{
     background-color: #ecf8f9;
 }
 body.login{
-    /*background-image: url('uploads/design/krios.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center top;*/
     background-color: white;
 }
 div#loginPage{
@@ -149,8 +145,7 @@ p.underline{
     border-bottom: solid;
     border-width: 1px;
 }
-
-
+/*  ALL PATIENTS */
 #patients{
     margin: 20px;
     margin-left: 5px;
@@ -325,8 +320,7 @@ button.patientForm{
 button.patientForm:hover{
     background-color: darkorange;
 }
-
-
+/* PATIENT PAGE */
 .patientPage{
     margin-top: 1%;
     padding: 20px;
@@ -353,9 +347,11 @@ a.buttonLink{
 a.buttonLink:hover{
     background-color: darkorange;
 }
+a#editPatient{
+    padding: .5em 1.5em .5em 1.5em;
+}
 div.patientPageFirst{
     text-align: center;
-    padding: 10px;
 }
 .patientPageImage{
     margin-bottom: 20px;
@@ -409,14 +405,12 @@ input#upload_form_xRayFile {
 .x-smallIcon{
     width: 1em;
 }
-
 .trashIcon{
     transition: transform .25s ease;
 }
 .trashIcon:hover{
     transform: scale(.8);
 }
-
 /* User administration */
 .centered{
     text-align: center;
