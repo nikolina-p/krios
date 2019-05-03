@@ -8,30 +8,47 @@
         <link href="{{ asset('krios.css') }}" rel="stylesheet" />
     {% endblock %}
 </head>
-<body>
+<body class="login">
 {% block body %}
-    <form method="post">
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
+    <div id="loginPage">
+        <img src="{{ asset('uploads/design/krios.jpg') }}">
+        <div id="loginContainer">
+            <form method="post">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
 
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="inputUsername" class="sr-only">Username</label>
-        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <table id="patientForm">
+                    <tr>
+                        <td class="label">
+                            <label for="inputUsername" class="sr-only">Username</label>
+                        </td>
+                        <td>
+                            <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">
+                            <label for="inputPassword" class="sr-only">Password</label>
+                        </td>
+                        <td>
+                            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                        </td>
+                    </tr>
+                </table>
 
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me" checked> Remember me
-            </label>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                <div class="checkbox mb-3">
+                    <label id="rememberme">
+                        <input type="checkbox" name="_remember_me" checked> Remember me
+                    </label>
+                </div>
+                <hr>
+                <button class="btn btn-lg btn-primary login" type="submit">Sign in</button>
+            </form>
         </div>
+    </div>
 
-        <button class="btn btn-lg btn-primary" type="submit">
-            Sign in
-        </button>
-    </form>
 {% endblock %}
 {% block javascripts %}
 {% endblock %}

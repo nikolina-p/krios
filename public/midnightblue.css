@@ -6,24 +6,23 @@ body{
     background-color: #ecf8f9;
 }
 body.login{
-    /*background-image: url('uploads/design/krios.jpg');
+    background-image: url('uploads/design/krios.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: center top;*/
+    background-position: center top;
     background-color: white;
 }
-div#loginPage{
-    text-align: center;
-}
 div#loginContainer{
-    margin: auto;
+    position: absolute;
+    bottom: 30%;
+    left: 37%;
     text-align: center;
     border: 1px solid midnightblue;
     background-color: white;
     width: 25%;
+    margin:auto;
+    margin-top: 3em;
     padding: .5em;
-    position: relative;
-    top: -80px;
 }
 #rememberme{
     font-size: x-small;
@@ -39,11 +38,6 @@ button.login{
     cursor: pointer;
     color: white;
 }
-hr{
-    height: 1px;
-    background-color: orangered;
-    border: orangered;
-}
 a#logout{
     margin: 0px;
     color: #916319;
@@ -56,7 +50,7 @@ div.userdata{
 p.username{
     display: inline;
     font-style: italic;
-    color: orangered;
+    color: midnightblue;
 }
 p.brown{
     display: inline;
@@ -184,8 +178,8 @@ p.xx-small{
     font-size: .5em;
 }
 p.fileNumber{
-    color: orangered;
-    border-bottom: 1px solid orangered;
+    color: midnightblue;
+    border-bottom: 1px solid midnightblue;
     margin-bottom: 4px;
 }
 
@@ -255,13 +249,13 @@ a.sidelink{
     border-radius: 3px;
 }
 a#active{
-    color: orangered;
+    color: midnightblue;
     font-weight: bold;
 }
 
 div#patientForm{
     text-align: center;
-    border: 1px solid orangered;
+    border: 1px solid midnightblue;
     background-color: white;
     width: 35%;
     margin:auto;
@@ -284,37 +278,36 @@ table#patientForm td{
 }
 h3{
     color: #916319;
-    border-bottom: 1px solid orangered;
+    border-bottom: 1px solid midnightblue;
     padding-bottom: .6em;
 }
 p.title{
     color: #916319;
     font-weight: bold;
-    border-bottom: 1px solid orangered;
+    border-bottom: 1px solid midnightblue;
     margin: 0px 0px 5px 0px;
 }
 input{
     border: 1px solid black;
     padding: 3px;
     border-radius: 2px;
-    font-family: Noto Serif;
 }
 div#patient_form_gender{
     font-size: x-small;
 }
 button.patientForm{
-    background-color: orangered;
-    border: orangered;
+    background-color: midnightblue;
+    border: midnightblue;
     border-radius: 2px;
     width: 80%;
     padding: .7em;
     margin-bottom: .6em;
     font-weight: bold;
     cursor: pointer;
-    color: wheat;
+    color: white;
 }
 button.patientForm:hover{
-    background-color: darkorange;
+    background-color: lightslategray;
 }
 
 
@@ -327,21 +320,21 @@ div.patientPage table{
     width: 100%;
 }
 div.patientPage td{
-    border-bottom: 1px solid orangered;
+    border-bottom: 1px solid midnightblue;
     padding: 3px;
 }
 a.buttonLink{
-    background-color: orangered;
+    background-color: midnightblue;
     text-decoration: none;
     font-size: .7em;
     font-weight: bold;
-    color: wheat;
+    color: white;
     text-align: center;
     padding: .5em .5em;
     border-radius: 2px;
 }
 a.buttonLink:hover{
-    background-color: darkorange;
+    background-color: lightslategray;
 }
 div.patientPageFirst{
     text-align: center;
@@ -368,7 +361,7 @@ div.patientPageFirst{
 }
 .uploadForm{
     padding: 20px 20px 10px 20px;
-    border: 1px solid orangered;
+    border: 1px solid midnightblue;
     border-radius: 3px;
     width: 60%;
     background-color: white;
@@ -380,18 +373,18 @@ input#upload_form_xRayFile {
 }
 .custom-file-upload {
     height: 31px;
-    background-color: orangered;
-    border: 1px solid orangered;
+    background-color: midnightblue;
+    border: 1px solid midnightblue;
     border-radius: 2px;
     display: inline-block;
     padding: 8px 20px 0 20px;
     font-weight: bold;
     font-size: .8em;
     cursor: pointer;
-    color: wheat;
+    color: white;
 }
 .custom-file-upload:hover {
-    background-color: darkorange;
+    background-color: lightslategray;
 }
 .smallIcon{
     width: 2em;
@@ -412,7 +405,7 @@ input#upload_form_xRayFile {
     text-align: center;
 }
 table#users{
-    border: 2px solid orangered;
+    border: 2px solid midnightblue;
     margin: auto;
     width: 90%;
     font-size: .7em;
@@ -420,11 +413,11 @@ table#users{
     background-color: white;
 }
 table#users td, th{
-    border: 1px solid orangered;
+    border: 1px solid midnightblue;
     padding: .5em;
 }
 table#users th{
-    border-bottom: 2px solid orangered;
+    border-bottom: 2px solid midnightblue;
 }
 .floatRight{
     float: right;
