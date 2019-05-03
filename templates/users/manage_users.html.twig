@@ -1,33 +1,37 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <table id="users">
-        <tr>
-            <td>ID</td>
-            <td>Ime</td>
-            <td>Prezime</td>
-            <td>username</td>
-            <td>edit</td>
-            <td>delete</td>
-        </tr>
-        {% for user in users %}
-        <tr class="selectable_row" id="{{ user.id }}" onclick="showUser('{{ user.id }}')">
-            <td>{{ user.id }}</td>
-            <td>{{ user.name }}</td>
-            <td>{{ user.surname }}</td>
-            <td>{{ user.username }}</td>
-            <td><a href="{{ path('edit_user',{ 'id': user.id }) }}">
-                    <img src="uploads/design/edit-29.png" class="trashIcon">
-                </a></td>
-            <td><a href="" onclick="deleteUser('{{ user.id }}')" >
-                    <img src="uploads/design/trash-23.png" class="trashIcon">
-                </a></td>
-        </tr>
-        {% endfor %}
-    </table>
+    <div class="centered column_75">
+        <h3>Administracija korisnika</h3>
+        <table id="users">
+            <tr class="header">
+                <th>ID</th>
+                <th>Ime</th>
+                <th>Prezime</th>
+                <th>username</th>
+                <th></th>
+                <th></th>
+            </tr>
+            {% for user in users %}
+                <tr class="selectable_row dataRow" id="{{ user.id }}" onclick="showUser('{{ user.id }}')">
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.surname }}</td>
+                    <td>{{ user.username }}</td>
+                    <td><a href="{{ path('edit_user',{ 'id': user.id }) }}">
+                            <img src="uploads/design/pen_1.png" class="trashIcon smallIcon">
+                        </a></td>
+                    <td><a href="" onclick="deleteUser('{{ user.id }}')" >
+                            <img src="uploads/design/trash_1.png" class="trashIcon smallIcon">
+                        </a></td>
+                </tr>
+            {% endfor %}
+        </table>
         {% if users|length == 0 %}
             <h4>No users found</h4>
         {% endif %}
         <br>
-        <span><a href="{{ path('new_user') }}">New user</a></span><br>
+        <span><a href="{{ path('new_user') }}" id="addUser" class="buttonLink floatRight">Dodaj korisnika</a></span><br>
+    </div>
+
 {% endblock %}

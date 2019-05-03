@@ -356,11 +356,42 @@ input#upload_form_xRayFile {
 .custom-file-upload:hover {
     background-color: darkorange;
 }
+.smallIcon{
+    width: 2em;
+}
+.x-smallIcon{
+    width: 1em;
+}
 
 .trashIcon{
-    width: 1em;
     transition: transform .25s ease;
 }
 .trashIcon:hover{
     transform: scale(.8);
+}
+
+/* User administration */
+.centered{
+    text-align: center;
+}
+table#users{
+    border: 2px solid orangered;
+    margin: auto;
+    width: 90%;
+    font-size: .7em;
+    border-collapse: collapse;
+    background-color: white;
+}
+table#users td, th{
+    border: 1px solid orangered;
+    padding: .5em;
+}
+table#users th{
+    border-bottom: 2px solid orangered;
+}
+.floatRight{
+    float: right;
+}
+a#addUser{
+    margin-right: 5%;
 }
