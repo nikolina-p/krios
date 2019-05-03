@@ -64,6 +64,7 @@ class PatientController extends AbstractController
     public function newPatient(Request $request)
     {
         $patient = new Patient();
+        $patient->setId($this->patientService->findLastId()+1);
         $patient->setGender('MALE');
         $patient->setRegistrationDate(new \DateTime('now'));
         $form = $this->createForm(PatientForm::class, $patient);
@@ -72,7 +73,9 @@ class PatientController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->patientService->newPatient($patient);
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('show_patient', [
+                'id' => $patient->getId(),
+            ]);
         }
         return $this->render('patients/patient_form.html.twig', array(
             'form' => $form->createView(),

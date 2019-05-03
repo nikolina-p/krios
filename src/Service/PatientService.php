@@ -44,4 +44,9 @@ class PatientService
     {
         $this->xRayFileService->deleteXRayFile($id);
     }
+    public function findLastId(): int
+    {
+        return $this->patientRepository->findOneBy([], ['id' => 'desc'])->getId();
+
+    }
 }

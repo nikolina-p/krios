@@ -188,6 +188,10 @@ p.fileNumber{
     border-bottom: 1px solid orangered;
     margin-bottom: 4px;
 }
+small#patientForm{
+    font-size: medium;
+    font-weight: bold;
+}
 
 div.searchForm{
     margin-top: 20px;
@@ -284,6 +288,7 @@ table#patientForm td{
 }
 h3{
     color: #916319;
+    margin-bottom: .5em;
     border-bottom: 1px solid orangered;
     padding-bottom: .6em;
 }
@@ -292,6 +297,10 @@ p.title{
     font-weight: bold;
     border-bottom: 1px solid orangered;
     margin: 0px 0px 5px 0px;
+}
+p#fileNumberForm{
+    color: orangered;
+    margin-bottom: 1em;
 }
 input{
     border: 1px solid black;
@@ -319,6 +328,7 @@ button.patientForm:hover{
 
 
 .patientPage{
+    margin-top: 1%;
     padding: 20px;
     color: #916319;
     font-size: small;

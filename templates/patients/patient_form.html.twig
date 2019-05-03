@@ -10,6 +10,8 @@
     {% endif %}
     <div id="patientForm">
         <h3>{{ title }}</h3>
+        <p id="fileNumberForm" class="text">Broj kartona:
+            <small id="patientForm">{{ patient.id }}</small></p>
         {{ form_start(form) }}
         <table id="patientForm">
             <tr>
