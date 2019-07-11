@@ -65,12 +65,6 @@ class UserService
         $this->userRepository->persist($user);
     }
 
-    public function editUser(User $user): void
-    {
-        $user->setPassword($this->encodePassword($user));
-        $this->userRepository->saveChanges();
-    }
-
     public function deleteUser(User $user)
     {
         $this->userRepository->delete($user);
