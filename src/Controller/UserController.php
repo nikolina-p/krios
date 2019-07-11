@@ -88,7 +88,7 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->userService->editUser();
+            $this->userService->editUser($user);
             return $this->redirectToRoute('manage_users');
         }
 
