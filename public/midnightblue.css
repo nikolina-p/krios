@@ -1,42 +1,51 @@
+:root {
+    --color-first: midnightblue;
+    --color-second: #916319;
+    --color-third: aquamarine;
+    --color-forth: #05013f;
+    --color-invisible: #ecf8f9;
+}
 * {
     box-sizing: border-box;
     font-family: Quicksand;
 }
 body{
-    background-color: #ecf8f9;
+    background-color: var(--color-invisible);
 }
 body.login{
-    background-image: url('uploads/design/krios.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center top;
     background-color: white;
 }
-div#loginContainer{
-    position: absolute;
-    bottom: 30%;
-    left: 37%;
+div#loginPage{
     text-align: center;
-    border: 1px solid midnightblue;
+}
+div#loginContainer{
+    margin: auto;
+    text-align: center;
+    border: 1px solid var(--color-first);
     background-color: white;
     width: 25%;
-    margin:auto;
-    margin-top: 3em;
     padding: .5em;
+    position: relative;
+    top: -80px;
 }
 #rememberme{
     font-size: x-small;
     color: #916319;
 }
 button.login{
-    background-color: midnightblue;
-    border: midnightblue;
+    background-color: var(--color-first);
+    border: var(--color-first);
     border-radius: 2px;
     width: 80%;
     padding: .5em;
     margin: .8em 0 .6em 0;
     cursor: pointer;
     color: white;
+}
+hr{
+    height: 1px;
+    background-color: var(--color-first);
+    border: var(--color-first);
 }
 a#logout{
     margin: 0px;
@@ -50,7 +59,7 @@ div.userdata{
 p.username{
     display: inline;
     font-style: italic;
-    color: midnightblue;
+    color: var(--color-first);
 }
 p.brown{
     display: inline;
@@ -83,7 +92,7 @@ div.home{
 }
 .selectable_link:hover{
     text-decoration: underline;
-    color: blue;
+    color: var(--color-forth);
 }
 
 .row{
@@ -143,8 +152,7 @@ p.underline{
     border-bottom: solid;
     border-width: 1px;
 }
-
-
+/*  ALL PATIENTS */
 #patients{
     margin: 20px;
     margin-left: 5px;
@@ -158,7 +166,7 @@ div.patientBox{
 div.patientImage{
     float: left;
     display: flex;
- }
+}
 .patientIcon{
     width: 4em;
 }
@@ -178,9 +186,13 @@ p.xx-small{
     font-size: .5em;
 }
 p.fileNumber{
-    color: midnightblue;
-    border-bottom: 1px solid midnightblue;
+    color: var(--color-first);
+    border-bottom: 1px solid var(--color-first);
     margin-bottom: 4px;
+}
+small#patientForm{
+    font-size: medium;
+    font-weight: bold;
 }
 
 div.searchForm{
@@ -249,13 +261,13 @@ a.sidelink{
     border-radius: 3px;
 }
 a#active{
-    color: midnightblue;
+    color: var(--color-first);
     font-weight: bold;
 }
 
 div#patientForm{
     text-align: center;
-    border: 1px solid midnightblue;
+    border: 1px solid var(--color-first);
     background-color: white;
     width: 35%;
     margin:auto;
@@ -278,40 +290,46 @@ table#patientForm td{
 }
 h3{
     color: #916319;
-    border-bottom: 1px solid midnightblue;
+    margin-bottom: .5em;
+    border-bottom: 1px solid var(--color-first);
     padding-bottom: .6em;
 }
 p.title{
     color: #916319;
     font-weight: bold;
-    border-bottom: 1px solid midnightblue;
+    border-bottom: 1px solid var(--color-first);
     margin: 0px 0px 5px 0px;
+}
+p#fileNumberForm{
+    color: var(--color-first);
+    margin-bottom: 1em;
 }
 input{
     border: 1px solid black;
     padding: 3px;
     border-radius: 2px;
+    font-family: Noto Serif;
 }
 div#patient_form_gender{
     font-size: x-small;
 }
 button.patientForm{
-    background-color: midnightblue;
-    border: midnightblue;
+    background-color: var(--color-first);
+    border: var(--color-first);
     border-radius: 2px;
     width: 80%;
     padding: .7em;
     margin-bottom: .6em;
     font-weight: bold;
     cursor: pointer;
-    color: white;
+    color: wheat;
 }
 button.patientForm:hover{
-    background-color: lightslategray;
+    background-color: var(--color-forth);
 }
-
-
+/* PATIENT PAGE */
 .patientPage{
+    margin-top: 1%;
     padding: 20px;
     color: #916319;
     font-size: small;
@@ -320,25 +338,27 @@ div.patientPage table{
     width: 100%;
 }
 div.patientPage td{
-    border-bottom: 1px solid midnightblue;
+    border-bottom: 1px solid var(--color-first);
     padding: 3px;
 }
 a.buttonLink{
-    background-color: midnightblue;
+    background-color: var(--color-first);
     text-decoration: none;
     font-size: .7em;
     font-weight: bold;
-    color: white;
+    color: wheat;
     text-align: center;
     padding: .5em .5em;
     border-radius: 2px;
 }
 a.buttonLink:hover{
-    background-color: lightslategray;
+    background-color: var(--color-forth);
+}
+a#editPatient{
+    padding: .5em 1.5em .5em 1.5em;
 }
 div.patientPageFirst{
     text-align: center;
-    padding: 10px;
 }
 .patientPageImage{
     margin-bottom: 20px;
@@ -361,7 +381,7 @@ div.patientPageFirst{
 }
 .uploadForm{
     padding: 20px 20px 10px 20px;
-    border: 1px solid midnightblue;
+    border: 1px solid var(--color-first);
     border-radius: 3px;
     width: 60%;
     background-color: white;
@@ -373,18 +393,18 @@ input#upload_form_xRayFile {
 }
 .custom-file-upload {
     height: 31px;
-    background-color: midnightblue;
-    border: 1px solid midnightblue;
+    background-color: var(--color-first);
+    border: 1px solid var(--color-first);
     border-radius: 2px;
     display: inline-block;
     padding: 8px 20px 0 20px;
     font-weight: bold;
     font-size: .8em;
     cursor: pointer;
-    color: white;
+    color: wheat;
 }
 .custom-file-upload:hover {
-    background-color: lightslategray;
+    background-color: var(--color-forth);
 }
 .smallIcon{
     width: 2em;
@@ -392,20 +412,18 @@ input#upload_form_xRayFile {
 .x-smallIcon{
     width: 1em;
 }
-
 .trashIcon{
     transition: transform .25s ease;
 }
 .trashIcon:hover{
     transform: scale(.8);
 }
-
 /* User administration */
 .centered{
     text-align: center;
 }
 table#users{
-    border: 2px solid midnightblue;
+    border: 2px solid var(--color-first);
     margin: auto;
     width: 90%;
     font-size: .7em;
@@ -413,11 +431,11 @@ table#users{
     background-color: white;
 }
 table#users td, th{
-    border: 1px solid midnightblue;
+    border: 1px solid var(--color-first);
     padding: .5em;
 }
 table#users th{
-    border-bottom: 2px solid midnightblue;
+    border-bottom: 2px solid var(--color-first);
 }
 .floatRight{
     float: right;
