@@ -9,29 +9,27 @@
         {% endblock %}
     </head>
     <body>
-    <div id="navigation">
-        {% block navigation %}
-            {% if is_granted('ROLE_USER') %}
-                <div class="row">
-                    <div class="home column_25">
-                        <a href="{{ path('homepage', {'page': 1}) }}" class="x-small">
-                            <img src="{{ asset('uploads/design/patients.png') }}" class="homeIcon">
-                        </a>
-                    </div>
-                    <div class="userdata column_75">
-                        <a href="{{ path('app_logout') }}" id="logout">logout</a>
-                        <div class="username">
-                            <p class="text brown"><b >Korisnik: </b></p>
-                            <p class="text username">{{ app.user.name~" "~app.user.surname }}</p>
-                        </div>
-
-                    </div>
+    {% block navigation %}
+        {% if is_granted('ROLE_USER') %}
+            <div class="row">
+                <div class="home column_25">
+                    <a href="{{ path('homepage', {'page': 1}) }}" class="x-small">
+                        <img src="{{ asset('uploads/design/patients.png') }}" class="homeIcon">
+                    </a>
                 </div>
-            {% else %}
-                <span><a href="{{ path('app_login') }}">login</a></span>
-            {% endif %}
-        {% endblock %}
-    </div>
+                <div class="userdata column_75">
+                    <a href="{{ path('app_logout') }}" id="logout">logout</a>
+                    <div class="username">
+                        <p class="text brown"><b >Korisnik: </b></p>
+                        <p class="text username">{{ app.user.name~" "~app.user.surname }}</p>
+                    </div>
+
+                </div>
+            </div>
+        {% else %}
+            <span><a href="{{ path('app_login') }}">login</a></span>
+        {% endif %}
+    {% endblock %}
     <div class="row mainPage">
         <div id="body" class="mainBox column_85">
             {% block body %}{% endblock %}
@@ -55,6 +53,10 @@
             </div>
 
         </div>
+    </div>
+    <div class="footer column_100" style=" height: 20px;
+    position: fixed; bottom: 0px; left: 0px; background: #cff1f9; color: #318795; text-align: center; padding-top: 7px; font-style: italic; font-size: .5em">
+        @nikolina
     </div>
 
         {% block javascripts %}

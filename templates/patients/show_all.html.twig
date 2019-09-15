@@ -28,7 +28,7 @@
             <h4>No patients found</h4>
         {% endif %}
 
-        {% include "patients/pagination.html.twig" %}
+
     </div>
     <div id="search" class="column_25 middleBox">
         <div class="searchForm">
@@ -45,6 +45,9 @@
         </div>
     </div>
         <br>
+    <div class="row" style="position: fixed; bottom: 22px">
+        {% include "patients/pagination.html.twig" %}
+    </div>
 {% endblock %}
 
 {#  <div>Icons made by <a href="https://www.flaticon.com/authors/eucalyp" title="Eucalyp">Eucalyp</a> from
